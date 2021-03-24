@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pertemuan7/dbhelper.dart';
+import 'package:pertemuan7/helpers/dbhelper.dart';
 import 'package:pertemuan7/models/item.dart';
-import 'package:pertemuan7/widgets/entryform.dart';
+import 'package:pertemuan7/pages/entryform.dart';
 import 'package:sqflite/sqflite.dart';
 import 'dart:async';
 

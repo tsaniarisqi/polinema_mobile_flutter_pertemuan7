@@ -5,7 +5,7 @@ import 'dart:io';
 //bekerja pada file dan directory
 import 'package:path_provider/path_provider.dart';
 
-import 'models/item.dart';
+import '../models/item.dart';
 //pubspec.yml
 
 //kelas DbHelper
