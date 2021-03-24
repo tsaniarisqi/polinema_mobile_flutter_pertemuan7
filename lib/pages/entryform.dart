@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:pertemuan7/models/item.dart';
+import 'package:pertemuan7/pages/home.dart';
 
 class EntryForm extends StatefulWidget {
   final Item item;
@@ -26,7 +27,15 @@ class EntryFormState extends State<EntryForm> {
     return Scaffold(
       appBar: AppBar(
         title: item == null ? Text('Tambah') : Text('Ubah'),
-        leading: Icon(Icons.keyboard_arrow_left),
+        leading: new IconButton(
+          icon: new Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(
+              context,
+              MaterialPageRoute(builder: (context) => Home()),
+            );
+          },
+        ),
       ),
       body: Padding(
         padding: EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
