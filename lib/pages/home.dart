@@ -87,6 +87,7 @@ class HomeState extends State<Home> {
               var item =
                   await navigateToEntryForm(context, this.itemList[index]);
               //TODO 4 Panggil Fungsi untuk Edit data
+              if (item != null) editItem(item);
             },
           ),
         );
@@ -97,6 +98,14 @@ class HomeState extends State<Home> {
   //delete Item
   void deleteItem(Item object) async {
     int result = await dbHelper.delete(object.id);
+    if (result > 0) {
+      updateListView();
+    }
+  }
+
+  //edit data
+  void editItem(Item object) async {
+    int result = await dbHelper.update(object);
     if (result > 0) {
       updateListView();
     }
