@@ -1,16 +1,42 @@
-# pertemuan7
+# Jobsheet 6 - Database SQLITE
 
-A new Flutter project.
+## Halaman Awal
 
-## Getting Started
+Pada halaman awal terdapat tombol Tambah Item untuk menambahkan item.
 
-This project is a starting point for a Flutter application.
+![plot](./images/1.jpeg)
 
-A few resources to get you started if this is your first Flutter project:
+## Halaman Tambah Item
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Pada halaman ini terdapat form untuk mengisi kode barang, nama barang, harga dan stok.
+Kemudian pada halaman ini terdapat tombol save untuk menyimpan form yang telah diisi.
+Dan tombol cancel untuk membatalkan pengisian form.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![plot](./images/2.jpeg)
+
+![plot](./images/3.jpeg)
+
+Setelah mengklik tombol save, maka item yang berhasil ditambahkan akan tampil pada halaman awal.
+
+![plot](./images/4.jpeg)
+
+## Halaman Rubah
+
+Untuk mengedit item, maka klik lah item yang ingin diedit.
+Kemudian akan muncul form untuk melakukan pengeditan.
+
+![plot](./images/5.jpeg)
+
+Jika sudah melakukan edit, klik save. Maka item yang sudah diedit akan muncul pada halaman awal.
+
+![plot](./images/6.jpeg)
+
+## Hapus
+
+Ketika ingin menghapus item, maka klik icon delete.
+
+![plot](./images/7.jpeg)
+
+Jika proses penhapusan berhasil, maka item akan hilang dari daftar yang ada pada halaman awal.
+
+![plot](./images/8.jpeg)
