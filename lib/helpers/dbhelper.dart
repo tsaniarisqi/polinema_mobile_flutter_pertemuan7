@@ -1,42 +1,50 @@
 import 'package:sqflite/sqflite.dart';
 import 'dart:async';
-//mendukug pemrograman asinkron
 import 'dart:io';
-//bekerja pada file dan directory
 import 'package:path_provider/path_provider.dart';
-
 import '../models/item.dart';
-//pubspec.yml
 
 //kelas DbHelper
 class DbHelper {
   static DbHelper _dbHelper;
   static Database _database;
   DbHelper._createObject();
-  
+
   Future<Database> initDb() async {
-  
     //untuk menentukan nama database dan lokasi yg dibuat
     Directory directory = await getApplicationDocumentsDirectory();
     String path = directory.path + 'item.db';
-  
+
     //create, read databases
-    var itemDatabase = openDatabase(path,
-        version: 4,
-        onCreate:
-            _createDb); //mengembalikan nilai object sebagai hasil dari fungsinya
+    var itemDatabase = await openDatabase(path,
+        version: 13,
+        onCreate: _createDb,
+        onUpgrade:
+            _upgradeDb); //mengembalikan nilai object sebagai hasil dari fungsinya
     return itemDatabase;
   }
 
   //buat tabel baru dengan nama item
   void _createDb(Database db, int version) async {
     await db.execute('''
-    CREATE TABLE item (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT,
-    price INTEGER
-    )
-    ''');
+                CREATE TABLE item (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT,
+                price INTEGER,
+                stok INTEGER,
+                kodeBarang TEXT
+                )
+                ''');
+  }
+
+  //upgrate tabel
+  FutureOr<void> _upgradeDb(Database db, int oldVersion, int newVersion)async {
+    if (oldVersion < 12) {
+     await db.execute('''ALTER TABLE item ADD COLUMN stok INTEGER;''');
+    }
+    if (oldVersion < 13) {
+      await db.execute('''ALTER TABLE item ADD COLUMN kodeBarang INTEGER;''');
+    }
   }
 
   //select databases
@@ -59,8 +67,9 @@ class DbHelper {
     int count = await db
         .update('item', object.toMap(), where: 'id=?', whereArgs: [object.id]);
     return count;
-  } //delete databases
+  }
 
+  //delete databases
   Future<int> delete(int id) async {
     Database db = await this.initDb();
     int count = await db.delete('item', where: 'id=?', whereArgs: [id]);

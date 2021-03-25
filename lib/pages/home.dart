@@ -66,16 +66,47 @@ class HomeState extends State<Home> {
         return Card(
           color: Colors.white,
           elevation: 2.0,
+          margin: EdgeInsets.all(8),
           child: ListTile(
             leading: CircleAvatar(
               backgroundColor: Colors.red,
               child: Icon(Icons.ad_units),
             ),
-            title: Text(
-              this.itemList[index].name,
-              style: textStyle,
+            title: Row(
+              children: [
+                Container(
+                  padding: EdgeInsets.only(right: 10),
+                  child: Text(
+                    this.itemList[index].kodeBarang,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: Colors.grey[400]),
+                  ),
+                ),
+                Container(
+                  child: Text(
+                    this.itemList[index].name,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+              ],
             ),
-            subtitle: Text(this.itemList[index].price.toString()),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  padding: EdgeInsets.only(top: 5),
+                  child: Text(
+                    "Rp " + this.itemList[index].price.toString(),
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+                  ),
+                ),
+              ],
+            ),
             trailing: GestureDetector(
               child: Icon(Icons.delete),
               onTap: () async {
