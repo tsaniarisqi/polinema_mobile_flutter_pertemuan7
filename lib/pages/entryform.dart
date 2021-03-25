@@ -35,10 +35,7 @@ class EntryFormState extends State<EntryForm> {
         leading: new IconButton(
           icon: new Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(
-              context,
-              MaterialPageRoute(builder: (context) => Home()),
-            );
+            Navigator.pop(context);
           },
         ),
       ),
